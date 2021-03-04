@@ -18,6 +18,7 @@ export default class OTPInputView extends Component<InputProps, OTPInputViewStat
         clearInputs: false,
         placeholderCharacter: "",
         selectionColor: '#000',
+        cardNumber:false
     }
 
     private fields: TextInput[] | null[] = []
@@ -192,7 +193,7 @@ export default class OTPInputView extends Component<InputProps, OTPInputViewStat
                 <TextInput
                     testID="textInput"
                     underlineColorAndroid='rgba(0,0,0,0)'
-                    style={selectedIndex === index ? [defaultTextFieldStyle, codeInputFieldStyle, codeInputHighlightStyle] : [defaultTextFieldStyle, codeInputFieldStyle]}
+                    style={selectedIndex === index ? [defaultTextFieldStyle, codeInputFieldStyle, codeInputHighlightStyle] : [defaultTextFieldStyle, codeInputFieldStyle,{marginRight:this.props.cardNumber&&(index==4||index==8||index==12)?7:0}]}
                     ref={ref => { this.fields[index] = ref }}
                     onChangeText={text => {
                         this.handleChangeText(index, text)
